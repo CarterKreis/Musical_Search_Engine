@@ -1,0 +1,5 @@
+Client Name: Musical Search Engine
+App Website URL: https://github.com/CarterKreis
+Client ID:1qwVDwW-7cE6WZO6QBQxSzoQ7OSqd0JGSneUDGKWK35S7NmwKUGx0V2g8N5_2ykT
+Client Secret: XtyzmHuUAiFUTTvCgtef0HPjwaLN0miWPsRDoHBC507Em-RSAcnYyzF8Ut3xy70iP1CW1NsvrLAiGKTx3-ur_A
+Client Access Token: n39nJB4-PwnC7DwDKEUBu44G5OcsBZ6T69OBbgtZ53ozs42NrxHGzhOq0lpYU5yT
