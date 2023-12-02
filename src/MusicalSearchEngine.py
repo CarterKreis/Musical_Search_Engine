@@ -21,46 +21,57 @@ def testGenius():
     # e.g. search_artist("Luke") will always return Luke Combs
 
 
-# Prints out menu
+# Prints out Mainmenu
 def printMenu():
-    print("How would you like to search?")
-    print("1. ")
-    print("2. ")
-    print("3. ")
-    print("4. ")
-    print("5. ")
-    print("6. Quit Searching")
+    print("What action would you like to perform?")
+    print("Please input the number for each option")
+    print("1. Sort")
+    print("2. Search")
+    print("3. Compare")
+    print("4. Quit Searching")
+
+
+# Prints out subMenu
+def subMenu(choice):
+    print(f"What would you like to {choice}?")
+    print("1. Song Title")
+    print("2. Album Name")
+    print("3. Artist Name")
+    print("4. Lyric(s)")
+    print("5. Genre")
+    print("6. Go Back to Main Menu")
 
 
 if __name__ == "__main__":
     print("Welcome to the Musical Search Engine")
-    print("------------------------------------\n")
+    print("------------------------------------")
 
     menu = True
     while menu:
         printMenu()
-        choice = input()
+        mainChoice = input()
 
-        if choice == "1":
-            pass
+        # Sorting
+        if mainChoice == "1":
+            subMenu("Sort")
+            subChoice = input()
 
-        elif choice == "2":
-            pass
+        # Searching
+        elif mainChoice == "2":
+            subMenu("Search")
+            subChoice = input()
 
-        elif choice == "3":
-            pass
+        # Comparing
+        elif mainChoice == "3":
+            subMenu("Compare")
+            subChoice = input()
 
-        elif choice == "4":
-            pass
-
-        elif choice == "5":
-            pass
-
-        elif choice == "6":
+        # Exit option
+        elif mainChoice == "4":
             print("See you later!")
             menu = False
 
         else:
-            print("Please type a number 1-6")
+            print("Please type a number 1-4")
 
     # testGenius()
