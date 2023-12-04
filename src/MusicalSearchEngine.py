@@ -1,5 +1,5 @@
 import lyricsgenius
-import EngineFunctions
+import Functions
 from lyricsgenius import Genius
 from API import Genius_API_Key
 
@@ -26,20 +26,23 @@ def demoGenius():
 def printMenu():
     print(f"What would you like to Search?")
     print("Please input a number 1-6")
-    print("1. ")
-    print("2. ")
-    print("3. ")
-    print("4. ")
+    print("1. Most common word from song")
+    print("2. Most common word from album")
+    print("3. Top 5 songs of an Artist")
+    print("4. Most common word from top 20 songs in a genre")
     print("5. ")
     print("6. Exit Program")
 
 
 """
-1. Most Common word from song - Search->Song
-2. Song that uses inputted word the most - Search->Lyric
-3. Top 5 songs of Artist - Search->artist
-4. 
-
+Potential Functions 
+? = potential concepts
+1. Most Common word from song?
+2. Most Common word from album?
+3. Top 5 songs of Artist 
+4. Most common word from top 20 songs in a genre?
+5. 
+6. Exit Program
 """
 
 if __name__ == "__main__":
@@ -61,7 +64,9 @@ if __name__ == "__main__":
             pass
 
         elif mainChoice == "3":
-            pass
+            print("Enter the name of the artist: ")
+            name = input()
+            Functions.topFiveSongs(name)
 
         elif mainChoice == "4":
             pass
