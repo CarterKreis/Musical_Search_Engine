@@ -1,4 +1,5 @@
 import lyricsgenius
+import EngineFunctions
 from lyricsgenius import Genius
 from API import Genius_API_Key
 
@@ -21,76 +22,56 @@ def demoGenius():
     # e.g. search_artist("Luke") will always return Luke Combs
 
 
-# searches top 20 songs with the keyword "songs" and prints out the title of the songs
-def testSongs():
-    genius = lyricsgenius.Genius(Genius_API_Key.token)
-    genius.verbose = False
-
-    songs = genius.search_songs("girl", per_page=50)
-
-    for song in songs['hits']:
-        print("Song:", song['result']['full_title'], "\nArtist:", song['result']['artist_names'], "\n")
-
-
 # Prints out Main-menu
 def printMenu():
-    print("What action would you like to perform?")
-    print("Please input the number for each option")
-    print("1. Sort")
-    print("2. Search")
-    print("3. Compare")
-    print("4. Quit Searching")
+    print(f"What would you like to Search?")
+    print("Please input a number 1-6")
+    print("1. ")
+    print("2. ")
+    print("3. ")
+    print("4. ")
+    print("5. ")
+    print("6. Exit Program")
 
 
-# Prints out subMenu
-def subMenu(choice):
-    print(f"What would you like to {choice}?")
-    print("1. Song Title")
-    print("2. Album Name")
-    print("3. Artist Name")
-    print("4. Lyric(s)")
-    print("5. Genre")
-    print("6. Go Back to Main Menu")
+"""
+1. Most Common word from song - Search->Song
+2. Song that uses inputted word the most - Search->Lyric
+3. Top 5 songs of Artist - Search->artist
+4. 
 
+"""
 
 if __name__ == "__main__":
     print("Welcome to the Musical Search Engine")
     print("------------------------------------")
 
-    testSongs()
+    # EngineFunctions.testSongs()
+    # demoGenius()
 
     menu = True
     while menu:
         printMenu()
         mainChoice = input()
 
-        # Sorting
         if mainChoice == "1":
-            subMenu("Sort")
-            subChoice = input()
+            pass
 
-
-
-        # Searching
         elif mainChoice == "2":
-            subMenu("Search")
-            subChoice = input()
+            pass
 
-
-
-        # Comparing
         elif mainChoice == "3":
-            subMenu("Compare")
-            subChoice = input()
+            pass
 
-
-
-        # Exit option
         elif mainChoice == "4":
+            pass
+
+        elif mainChoice == "5":
+            pass
+
+        elif mainChoice == "6":
             print("See you later!")
             menu = False
 
         else:
-            print("Please type a number 1-4")
-
-    # demoGenius()
+            print("Please read the instructions again")
