@@ -87,7 +87,7 @@ import function
 import Genius_API_Key
 
 
-
+#carter
 # Function to show some of lyricsgenius functionality
 def demoGenius():
     # Examples of using lyricsgenius
@@ -107,27 +107,22 @@ def demoGenius():
 
 
 # Prints out Main-menu
-def printMenu():
+def printMenu():#carter
     print(f"What would you like to Search?")
     print("Please input a number 1-6")
-    print("1. Most common word from song")
-    print("2. Most common word from album")
-    print("3. Top 5 songs of an Artist")
-    print("4. Find if a song title has been made before")
-    print("5. Shared words between songs")
-    print("6. Exit Program")
+    print("1. Find artist from song (Map)")
+    print("2. Most common word from song (Map)")
+    print("3. Top 5 songs of an Artist (Map)")
+    print("4. Have album been made(Map)")
+    print("5. Shared words between songs (Map)")
+    print("6. Find artist from song (Graph)")
+    print("7. Most common word from song (Graph)")
+    print("8. Top 5 songs of an Artist (Graph)")
+    print("9. Find if a song title has been made before (Graph)")
+    print("10. Shared words between songs (Graph)")
+    print("11. Find all songs from an artist")
+    print("12. Exit Program")
 
-
-"""
-Potential Functions 
-? = potential concepts
-1. Most Common word from song?
-2. Most Common word from album?
-3. Top 5 songs of Artist 
-4. Most common word from?
-5. 
-6. Exit Program
-"""
 
 if __name__ == "__main__":
     print("Welcome to the Musical Search Engine")
@@ -141,17 +136,17 @@ if __name__ == "__main__":
         printMenu()
         mainChoice = input()
 
-        if mainChoice == "1":       #done
-            print("Enter the name of the artist then song: ")
-            artist = input()
+        if mainChoice == "1":       #Ian
+            print("Enter the name of the song ")
+
             song = input()
-            function.most_common_word_from_album(artist, song)
+            function.find_the_artist(song)
 
 
         elif mainChoice == "2":     #done
-            print("Enter the name of the artist then album: ")
+            print("Enter the name of the artist then song: ")
             artist = input()
-            album = input()
+            song = input()
             function.most_common_word_from_song(artist, album)
 
         elif mainChoice == "3":
@@ -171,10 +166,42 @@ if __name__ == "__main__":
             song1 = input()
             song2 = input()
             function.common_words(artist, song1,song2)
-        elif mainChoice == "6":
-            print("See you later!")
-            menu = False
+
+        elif mainChoice == "7":  #
+                print("Enter the name of the artist then song: ")
+                artist = input()
+                album = input()
+                function.most_common_word_from_song_graph(artist,album)
+
+
+        elif mainChoice == "6":  # Ian
+                print("Enter the song: ")
+                song = input()
+                function.find_the_artist_graph(song)
+
+        elif mainChoice == "8": #sam
+                print("Enter the name of the artist: ")
+                artist = input()
+                function.topFiveSongs_graph(artist)
+
+        elif mainChoice == "9": #Ian
+                print("Enter the name of the artist then album: ")
+                artist = input()
+                album = input()
+                function.does_song_exist_graph(artist, album)
+
+        elif mainChoice == "10":#sam
+                print("Enter the name of the artist then songs: ")
+                artist = input()
+                song1 = input()
+                song2 = input()
+                function.common_words_graph(artist, song1, song2)
+        elif mainChoice == "11":
+            print("Enter an artist name: ")
+            artist = input()
+            function.all_songs(artist)
 
         else:
             print("Please read the instructions again")
+#ian: we split up the code equally so we all had even work to do
 """
