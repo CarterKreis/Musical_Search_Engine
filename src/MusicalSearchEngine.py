@@ -4,25 +4,6 @@ from lyricsgenius import Genius
 from API import Genius_API_Key
 
 
-# Carter
-# Function to show some of lyricsgenius functionality
-def demoGenius():
-    # Examples of using lyricsgenius
-    # setting verbose to false gets rid of print() statements
-    genius = lyricsgenius.Genius(Genius_API_Key.token)
-    genius.verbose = False
-
-    # Includes songs where Andy is the main Artist for song
-    # Can sort by "title" or "popularity"
-    artist = genius.search_artist("Andy Shauf", max_songs=2, sort="title", include_features=True)
-    for song in artist.songs:
-        song.lyrics = ""
-        print(song)
-
-    # genius.search_artist will always choose the same artist
-    # e.g. search_artist("Luke") will always return Luke Combs
-
-
 # Prints out Main-menu
 def printMenu():  # Carter
     print(f"What would you like to Search?")
@@ -30,12 +11,12 @@ def printMenu():  # Carter
     print("1. Find artist from song (Map)")
     print("2. Most common word from song (Map)")
     print("3. Top 5 songs of an Artist (Map)")
-    print("4. Find if a song title has been made before (Map)")
+    print("4. Find if an album has been made before (Map)")
     print("5. Shared words between songs (Map)")
     print("6. Find artist from song (Graph)")
     print("7. Most common word from song (Graph)")
     print("8. Top 5 songs of an Artist (Graph)")
-    print("9. Find if a song title has been made before (Graph)")
+    print("9. Find if an album has been made before (Graph)")
     print("10. Shared words between songs (Graph)")
     print("11. Find all songs from an artist (Map)")
     print("12. Exit Program")
@@ -74,7 +55,7 @@ if __name__ == "__main__":
             print("Enter the name of the artist then album: ")
             artist = input()
             album = input()
-            Functions.does_song_exist(artist, album)
+            Functions.does_album_exist(artist, album)
 
         # Carter
         elif mainChoice == "5":
@@ -108,7 +89,7 @@ if __name__ == "__main__":
             print("Enter the name of the artist then album: ")
             artist = input()
             album = input()
-            Functions.does_song_exist_graph(artist, album)
+            Functions.does_album_exist_graph(artist, album)
 
         # Sam
         elif mainChoice == "10":

@@ -7,14 +7,13 @@ class AdjList:
         self.graph = Map()
 
     def insert(self, key, value):
-        if key in self.graph:
-            # self.graph.insert()
-            pass
-        else:
-            # if the key does not exist, add it and make value an empty list
-            # value = []
-            # self.graph.insert(key, value)
-            pass
+        if key not in self.graph:
+            self.graph.insert(key, value=[])
 
-    def search(self, vertex):
-        pass
+        self.graph.insert(key, value.append(value))
+
+    def search(self, key):
+        if key in self.graph:
+            return True
+        else:
+            return False

@@ -63,8 +63,10 @@ def find_the_artist_graph(song):  # ian
 def most_common_word_from_song(artist, song):  # Ian
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
 
+    # Retrieve song from Genius API
     popular_song = genius.search_song(artist, song)
 
+    # If the song exists use a map to get the amount of times a word appears in the song
     if popular_song:
 
         words = popular_song.lyrics.lower().split()
@@ -78,6 +80,7 @@ def most_common_word_from_song(artist, song):  # Ian
         print(f"Song '{song}' by {artist} not found on Genius.")
 
 
+# Retrieves song and prints out most common word from the song using a AdjList
 def most_common_word_from_song_graph(artist, song):  # Ian
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
     popular_song = genius.search_song(artist, song)
@@ -88,7 +91,8 @@ def most_common_word_from_song_graph(artist, song):  # Ian
 
     words = popular_song.lyrics.lower().split()
 
-    adjlist = {}  # will be a map of lists
+    # will be a map of lists
+    adjlist = {}
 
     for i in range(len(words) - 1):
         if words[i] in adjlist:
@@ -96,7 +100,8 @@ def most_common_word_from_song_graph(artist, song):  # Ian
         else:
             adjlist[words[i]] = []
 
-        if words[i + 1] in adjlist:  # append or create list depending on if element is there
+        # append or create list depending on if element is there
+        if words[i + 1] in adjlist:
             adjlist[words[i + 1]].append(words[i])
         else:
             adjlist[words[i + 1]] = []
@@ -113,7 +118,8 @@ def most_common_word_from_song_graph(artist, song):  # Ian
         f"The most common word for '{popular_song.title}' by {popular_song.artist} is '{most_common_word}' with {degree} occurrences.")
 
 
-def does_song_exist(artist, album):  # Carter
+# Checks if album exists from a search using album & artist name
+def does_album_exist(artist, album):  # Carter
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
     album_search = genius.search_album(artist, album)
 
@@ -126,7 +132,8 @@ def does_song_exist(artist, album):  # Carter
         print(f"'{album}' by {artist} has not been made yet!")
 
 
-def does_song_exist_graph(artist, album):  # Ian
+# Checks if album exists from a search using album & artist name using a AdjList
+def does_album_exist_graph(artist, album):  # Ian
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
     album_search = genius.search_album(artist, album)
 
@@ -142,6 +149,7 @@ def does_song_exist_graph(artist, album):  # Ian
         print(f"'{album}' by {artist} has not been made yet!")
 
 
+# Finds common words between two input songs
 def common_words(artist, song1, song2):
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
     lyrics1 = genius.search_song(song1, artist)
@@ -159,6 +167,7 @@ def common_words(artist, song1, song2):
     print(f"Shared words in '{song1}' and '{song2}': {shared_words}")
 
 
+# Finds common words between two input songs using a AdjList
 def common_words_graph(artist, song1, song2):  # Ian
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
 
@@ -202,6 +211,7 @@ def topFiveSongs(inputArtist):  # Carter
         print(song.title)
 
 
+# Gets the top 5 songs of an artist using AdjList
 def topFiveSongs_graph(inputArtist):  # Carter
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
     genius.excluded_terms = ["(Live)"]
@@ -218,6 +228,8 @@ def topFiveSongs_graph(inputArtist):  # Carter
         print(song.title)
 
 
+# Get all the songs of an input artist
+# Warning: Can Time Out if artist is big enough
 def all_songs(artist_name):
     # Create genius object with no print statements included
     # No section headers will be included in lyrics, and non songs will be skipped
