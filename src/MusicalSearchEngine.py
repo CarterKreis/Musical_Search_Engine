@@ -32,12 +32,14 @@ if __name__ == "__main__":
         mainChoice = input()
 
         # Ian
+        # Artist from song (Map)
         if mainChoice == "1":
             print("Enter the name of the song ")
             song = input()
             Functions.find_the_artist(song)
 
         # Carter
+        # Common word from song (Map)
         elif mainChoice == "2":
             print("Enter the name of the artist then song: ")
             artist = input()
@@ -45,12 +47,14 @@ if __name__ == "__main__":
             Functions.most_common_word_from_song(artist, song)
 
         # Carter
+        # Top 5 songs from artist (Map)
         elif mainChoice == "3":
             print("Enter the name of the artist: ")
             artist = input()
             Functions.topFiveSongs(artist)
 
         # Sam
+        # If album exists (Map)
         elif mainChoice == "4":
             print("Enter the name of the artist then album: ")
             artist = input()
@@ -58,6 +62,7 @@ if __name__ == "__main__":
             Functions.does_album_exist(artist, album)
 
         # Carter
+        # Shared words in songs (Map)
         elif mainChoice == "5":
             print("Enter the name of the artist then album: ")
             artist = input()
@@ -66,6 +71,7 @@ if __name__ == "__main__":
             Functions.common_words(artist, song1, song2)
 
         # Carter
+        # Most common word from song (Graph)
         elif mainChoice == "7":
             print("Enter the name of the artist then song: ")
             artist = input()
@@ -73,18 +79,21 @@ if __name__ == "__main__":
             Functions.most_common_word_from_song_graph(artist, album)
 
         # Ian
+        # Find Artist from song (Graph)
         elif mainChoice == "6":
             print("Enter the song: ")
             song = input()
             Functions.find_the_artist_graph(song)
 
         # Sam
+        # Top five songs of Artist (Graph)
         elif mainChoice == "8":
             print("Enter the name of the artist: ")
             artist = input()
             Functions.topFiveSongs_graph(artist)
 
         # Ian
+        # If album exists (Graph)
         elif mainChoice == "9":
             print("Enter the name of the artist then album: ")
             artist = input()
@@ -92,6 +101,7 @@ if __name__ == "__main__":
             Functions.does_album_exist_graph(artist, album)
 
         # Sam
+        # Common words from songs (Graph)
         elif mainChoice == "10":
             print("Enter the name of the artist then songs: ")
             artist = input()
@@ -100,6 +110,7 @@ if __name__ == "__main__":
             Functions.common_words_graph(artist, song1, song2)
 
         # Sam
+        # All the songs from an artist (Graph)
         elif mainChoice == "11":
             print("Enter an artist name: ")
             artist = input()
