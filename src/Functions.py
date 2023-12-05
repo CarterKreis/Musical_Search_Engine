@@ -11,6 +11,41 @@ remove_section_headers=True: removes headers such as [Chorus], [Verse], etc. fro
 skip_non_songs=True: does not return objects believed to not be songs
 """
 
+#adjlist is implemented through the map class
+class Map:  #code for the map that we are implementing, canvas had inforation on insertion
+    def __init__(self):
+        self.list = []
+
+    def insert(self, add_Key, value):
+        found = True
+        for i, (key, v) in enumerate(self.list):
+            if add_Key == key:
+                found = False
+                self.list[i] = (add_Key, value)
+                break   #breaks and found
+        if found:
+            self.list.append((add_Key, value))
+
+    def search(self, searchKey):
+        for key, value in self.list:
+            if searchKey == key:
+                return value
+        return
+    #https://www.geeksforgeeks.org/__getitem__-and-__setitem__-in-python/
+    def __setitem__(self, key, value): #have to set to support item assiggment
+        self.insert(key, value)
+
+    def __getitem__(self, key):
+        return self.search(key)
+
+    def __len__(self):  #is a counter that keeps track of length
+        return len(self.list)
+
+    def values(self):
+        Sum = 0
+        for key, value in self.list:
+            Sum += value
+        return Sum
 
 # Prints artist of the input song if song exists
 def find_the_artist(song):  # Ian
@@ -18,11 +53,11 @@ def find_the_artist(song):  # Ian
 
     # retrieves given song from Genius API request
     search_song = genius.search_song(song)
-    Map = {}
+    my_map= Map()
 
     # If the song exists get the artist and print it out
     if search_song:
-        Map[search_song] = search_song
+        my_map[search_song] = search_song#QQQ
         print(search_song)
         artist = search_song.primary_artist
 
@@ -36,8 +71,7 @@ def find_the_artist(song):  # Ian
 def find_the_artist_graph(song):  # Ian
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
 
-    # starts a timer to track speed of code
-    start = time.time()
+
 
     # retrieves song and stores in AdjList if exists
     search_song = genius.search_song(song)
@@ -52,12 +86,6 @@ def find_the_artist_graph(song):  # Ian
             print(f"The Artist of '{song}': {artist.name}")
     else:
         print("Not found!")
-
-    # stops the timer
-    end = time.time()
-
-    # overall time is printed out
-    print(end - start)
 
 
 # Retrieves song and prints out most common word from the song
@@ -124,8 +152,8 @@ def does_album_exist(artist, album):  # Sam
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
     album_search = genius.search_album(artist, album)
 
-    Map = {}
-    Map[album_search] = album_search if album_search else None
+    my_map = Map()
+    my_map[album_search] = album_search if album_search else None
     if album_search:
         print(f"'{album}' by {artist} has been made.")
 
@@ -156,13 +184,13 @@ def common_words(artist, song1, song2):  # Carter
     lyrics1 = genius.search_song(song1, artist)
     lyrics2 = genius.search_song(song2, artist)
 
-    map1 = Counter(lyrics1.lyrics.lower().split())
-    map2 = Counter(lyrics2.lyrics.lower().split())
+    my_map1 = Counter(lyrics1.lyrics.lower().split())
+    my_map2 = Counter(lyrics2.lyrics.lower().split())
 
     # Calculate common words
     shared_words = ""
-    for key in map1:
-        if key in map2:
+    for key in my_map1:
+        if key in my_map2:
             shared_words += key + ", "
     shared_words = shared_words[0:len(shared_words) - 2]
     print(f"Shared words in '{song1}' and '{song2}': {shared_words}")
@@ -206,9 +234,9 @@ def topFiveSongs(inputArtist):  # Carter
     artist = genius.search_artist(inputArtist, max_songs=5)
 
     print(f"Top 5 songs of {inputArtist}: ")
-    Map = {}
+    my_map=Map()
     for song in artist.songs:
-        Map[song.title] = song.title
+        my_map[song.title] = song.title
         print(song.title)
 
 
@@ -239,13 +267,14 @@ def all_songs(artist_name):  # Sam
     genius.excluded_terms = ["(Live)"]
 
     # get Artist object from Genius
-    artist = genius.search_artist(artist_name, max_songs=None)
+    artist = genius.search_artist(artist_name, max_songs=None) #max at 50 can change to anything
     Sum = 0
 
-    Map = {}
+    my_map=Map()
+
     for song in artist.songs:
         words = song.lyrics.lower().split()
         word_counts = Counter(words)
-        Map[song.title] = sum(word_counts.values())
+        my_map[song.title] = sum(word_counts.values())
 
-    print(f'This artist had {len(Map)} songs with {sum(Map.values())} lyrics')
+    print(f'This artist had {len(my_map)} songs with {(my_map.values())} lyrics')
