@@ -11,8 +11,9 @@ remove_section_headers=True: removes headers such as [Chorus], [Verse], etc. fro
 skip_non_songs=True: does not return objects believed to not be songs
 """
 
+
 # Prints artist of the input song if song exists
-def find_the_artist(song):  # Sam
+def find_the_artist(song):  # Ian
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
 
     # retrieves given song from Genius API request
@@ -32,7 +33,7 @@ def find_the_artist(song):  # Sam
 
 
 # Prints the artist of the input song if song exists and uses and Adjacency List
-def find_the_artist_graph(song):  # ian
+def find_the_artist_graph(song):  # Ian
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
 
     # starts a timer to track speed of code
@@ -60,7 +61,7 @@ def find_the_artist_graph(song):  # ian
 
 
 # Retrieves song and prints out most common word from the song
-def most_common_word_from_song(artist, song):  # Ian
+def most_common_word_from_song(artist, song):  # Carter
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
 
     # Retrieve song from Genius API
@@ -81,7 +82,7 @@ def most_common_word_from_song(artist, song):  # Ian
 
 
 # Retrieves song and prints out most common word from the song using a AdjList
-def most_common_word_from_song_graph(artist, song):  # Ian
+def most_common_word_from_song_graph(artist, song):  # Carter
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
     popular_song = genius.search_song(artist, song)
 
@@ -119,7 +120,7 @@ def most_common_word_from_song_graph(artist, song):  # Ian
 
 
 # Checks if album exists from a search using album & artist name
-def does_album_exist(artist, album):  # Carter
+def does_album_exist(artist, album):  # Sam
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
     album_search = genius.search_album(artist, album)
 
@@ -150,7 +151,7 @@ def does_album_exist_graph(artist, album):  # Ian
 
 
 # Finds common words between two input songs
-def common_words(artist, song1, song2):
+def common_words(artist, song1, song2):  # Carter
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
     lyrics1 = genius.search_song(song1, artist)
     lyrics2 = genius.search_song(song2, artist)
@@ -168,7 +169,7 @@ def common_words(artist, song1, song2):
 
 
 # Finds common words between two input songs using a AdjList
-def common_words_graph(artist, song1, song2):  # Ian
+def common_words_graph(artist, song1, song2):  # Sam
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
 
     lyrics1 = genius.search_song(song1, artist)
@@ -212,7 +213,7 @@ def topFiveSongs(inputArtist):  # Carter
 
 
 # Gets the top 5 songs of an artist using AdjList
-def topFiveSongs_graph(inputArtist):  # Carter
+def topFiveSongs_graph(inputArtist):  # Sam
     genius = lyricsgenius.Genius(Genius_API_Key.token, verbose=False, remove_section_headers=True, skip_non_songs=True)
     genius.excluded_terms = ["(Live)"]
 
@@ -229,8 +230,8 @@ def topFiveSongs_graph(inputArtist):  # Carter
 
 
 # Get all the songs of an input artist
-# Warning: Can Time Out if artist is big enough
-def all_songs(artist_name):
+# Warning: Can Time Out if artist has too many songs
+def all_songs(artist_name):  # Sam
     # Create genius object with no print statements included
     # No section headers will be included in lyrics, and non songs will be skipped
     # The object will also skip songs that are "Live" performances
